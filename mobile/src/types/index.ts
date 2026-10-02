@@ -94,6 +94,8 @@ export interface InspectionPhoto {
   lat?: number;
   lng?: number;
   takenAt?: string;
+  /** Chave do arquivo no storage (R2), preenchida após o upload. */
+  remoteKey?: string;
 }
 
 export type InspectionPhotoRef = InspectionPhoto | string;

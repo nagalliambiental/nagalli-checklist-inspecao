@@ -45,7 +45,10 @@ export default function SettingsScreen() {
     setSyncing(true);
     try {
       const result = await syncNow(db);
-      Alert.alert('Sincronizado', `${result.pushed} enviados, ${result.pulled} recebidos.`);
+      Alert.alert(
+        'Sincronizado',
+        `${result.pushed} dados enviados · ${result.pulled} recebidos\n${result.photosUp} fotos enviadas · ${result.photosDown} baixadas`,
+      );
     } catch (err) {
       Alert.alert('Falha ao sincronizar', err instanceof Error ? err.message : String(err));
     } finally {

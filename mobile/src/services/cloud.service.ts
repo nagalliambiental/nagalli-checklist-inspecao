@@ -1,5 +1,7 @@
 import type { SQLiteDatabase } from 'expo-sqlite';
+import * as FileSystem from 'expo-file-system/legacy';
 import { API_URL } from '../constants/api';
+import type { InspectionPhoto } from '../types';
 import { getInspectionService } from './inspection.service';
 
 const TOKEN_KEY = 'cloud_token';
@@ -301,24 +303,149 @@ async function applyRemoteDocs(db: SQLiteDatabase, docs: SyncDoc[]): Promise<voi
   }
 }
 
-export async function syncNow(db: SQLiteDatabase): Promise<{ pushed: number; pulled: number }> {
+// ── Fotos (guardadas no Neon) ────────────────────────────────────────────
+
+function photoFileName(photo: InspectionPhoto): string {
+  const base = (photo.uri ?? '').split('/').pop() ?? 'photo.jpg';
+  const clean = base.replace(/[^a-zA-Z0-9._-]/g, '_').slice(0, 100);
+  return clean || 'photo.jpg';
+}
+
+async function photoRows(db: SQLiteDatabase): Promise<{ inspection_id: string; id: string; photo_path: string }[]> {
+  return db.getAllAsync<{ inspection_id: string; id: string; photo_path: string }>(
+    'SELECT inspection_id, id, photo_path FROM inspection_items WHERE photo_path IS NOT NULL',
+  );
+}
+
+async function savePhotos(
+  db: SQLiteDatabase,
+  itemId: string,
+  inspectionId: string,
+  photos: InspectionPhoto[],
+): Promise<void> {
+  const ts = Date.now();
+  await db.runAsync('UPDATE inspection_items SET photo_path = ?, updated_at = ? WHERE id = ?', [
+    JSON.stringify(photos),
+    ts,
+    itemId,
+  ]);
+  // Marca a vistoria como alterada para o documento (com a chave da foto) subir.
+  await db.runAsync('UPDATE inspections SET updated_at = ? WHERE id = ?', [ts, inspectionId]);
+}
+
+async function uploadPendingPhotos(db: SQLiteDatabase): Promise<number> {
+  const token = await getToken(db);
+  if (!token) return 0;
+  let uploaded = 0;
+  for (const row of await photoRows(db)) {
+    let photos: InspectionPhoto[];
+    try {
+      photos = JSON.parse(row.photo_path);
+    } catch {
+      continue;
+    }
+    if (!Array.isArray(photos)) continue;
+    let changed = false;
+    for (const photo of photos) {
+      if (typeof photo === 'string' || photo.remoteKey || !photo.uri?.startsWith('file:')) continue;
+      try {
+        const info = await FileSystem.getInfoAsync(photo.uri);
+        if (!info.exists) continue;
+        const fileName = photoFileName(photo);
+        const contentType = fileName.toLowerCase().endsWith('.png') ? 'image/png' : 'image/jpeg';
+        const base64 = await FileSystem.readAsStringAsync(photo.uri, { encoding: FileSystem.EncodingType.Base64 });
+        const res = await api(
+          '/photos',
+          {
+            method: 'POST',
+            body: JSON.stringify({
+              inspectionId: row.inspection_id,
+              photoId: fileName.replace(/\.[^.]+$/, ''),
+              contentType,
+              base64,
+            }),
+          },
+          token,
+        );
+        photo.remoteKey = res.key;
+        changed = true;
+        uploaded += 1;
+      } catch {
+        // sem conexão ou arquivo ausente: tenta na próxima sincronização
+      }
+    }
+    if (changed) await savePhotos(db, row.id, row.inspection_id, photos);
+  }
+  return uploaded;
+}
+
+async function downloadRemotePhotos(db: SQLiteDatabase): Promise<number> {
+  const token = await getToken(db);
+  if (!token) return 0;
+  let downloaded = 0;
+  for (const row of await photoRows(db)) {
+    let photos: InspectionPhoto[];
+    try {
+      photos = JSON.parse(row.photo_path);
+    } catch {
+      continue;
+    }
+    if (!Array.isArray(photos)) continue;
+    let changed = false;
+    for (const photo of photos) {
+      if (typeof photo === 'string' || !photo.remoteKey) continue;
+      const exists = photo.uri?.startsWith('file:')
+        ? (await FileSystem.getInfoAsync(photo.uri)).exists
+        : false;
+      if (exists) continue;
+      try {
+        const dir = `${FileSystem.documentDirectory}photos/${row.inspection_id}`;
+        await FileSystem.makeDirectoryAsync(dir, { intermediates: true }).catch(() => {});
+        const target = `${dir}/${photoFileName(photo)}`;
+        const res = await FileSystem.downloadAsync(
+          `${API_URL}/photos?key=${encodeURIComponent(photo.remoteKey)}`,
+          target,
+          { headers: { Authorization: `Bearer ${token}` } },
+        );
+        if (res.status < 200 || res.status >= 300) continue;
+        photo.uri = target;
+        changed = true;
+        downloaded += 1;
+      } catch {
+        // tenta na próxima sincronização
+      }
+    }
+    if (changed) await savePhotos(db, row.id, row.inspection_id, photos);
+  }
+  return downloaded;
+}
+
+export async function syncNow(
+  db: SQLiteDatabase,
+): Promise<{ pushed: number; pulled: number; photosUp: number; photosDown: number }> {
   const token = await getToken(db);
   if (!token) throw new Error('Faça login para sincronizar.');
 
   const lastPull = Number(await getMeta(db, LAST_PULL_KEY)) || 0;
   const lastPush = Number(await getMeta(db, LAST_PUSH_KEY)) || 0;
 
-  // Coleta o local antes de aplicar o remoto, para não perder edições locais.
+  // 1) Sobe as fotos novas primeiro, para os documentos irem com a chave remota.
+  const photosUp = await uploadPendingPhotos(db);
+
+  // 2) Coleta o local antes de aplicar o remoto, para não perder edições locais.
   const docs = await collectLocalDocs(db, lastPush);
 
   const pulled = await api(`/sync/pull?since=${lastPull}`, { method: 'GET' }, token);
   await applyRemoteDocs(db, pulled.docs ?? []);
   await setMeta(db, LAST_PULL_KEY, String(pulled.serverTime ?? Date.now()));
 
+  // 3) Baixa as fotos que vieram de outro aparelho.
+  const photosDown = await downloadRemotePhotos(db);
+
   if (docs.length > 0) {
     await api('/sync/push', { method: 'POST', body: JSON.stringify({ docs }) }, token);
   }
   await setMeta(db, LAST_PUSH_KEY, String(Date.now()));
 
-  return { pushed: docs.length, pulled: (pulled.docs ?? []).length };
+  return { pushed: docs.length, pulled: (pulled.docs ?? []).length, photosUp, photosDown };
 }

@@ -9,8 +9,12 @@ API Node/Express que guarda os documentos sincronizados no Postgres do Neon.
 - `POST /auth/login` `{ email, password }` → `{ token, user }`
 - `POST /sync/push` (Bearer) `{ docs: [{ kind, id, data, deleted, updatedAt }] }`
 - `GET /sync/pull?since=<ms>` (Bearer) → `{ serverTime, docs: [...] }`
+- `POST /photos` (Bearer) `{ inspectionId, photoId, contentType, base64 }` → `{ key }`
+- `GET /photos?key=<key>` (Bearer) → bytes da imagem
 
 `kind` usado pelo app: `empreendimento`, `inspection`, `action`.
+
+As fotos ficam no próprio Postgres (coluna `bytea`), sem serviço externo.
 
 ## Variáveis de ambiente
 
