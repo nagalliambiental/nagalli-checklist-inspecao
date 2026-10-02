@@ -18,6 +18,7 @@ import { generateInspectionDocxAndShare } from '../../src/services/docx.service'
 import { generateInspectionPdf, sharePdf } from '../../src/services/pdf.service';
 import { zipInspectionPhotosAndShare } from '../../src/services/photo-backup.service';
 import { generate5w2hAndShare } from '../../src/services/xlsx5w2h.service';
+import { backupInspectionAndShare } from '../../src/services/backup.service';
 import { useTheme } from '../../src/contexts/ThemeContext';
 import { AppLogo } from '../../src/components/AppHeader';
 import type { Inspection } from '../../src/types';
@@ -28,7 +29,7 @@ export default function InspectionExportScreen() {
   const db = useSQLiteContext();
   const { colors } = useTheme();
   const [inspection, setInspection] = useState<Inspection | null>(null);
-  const [exporting, setExporting] = useState<'docx' | 'pdf' | 'zip' | 'xlsx' | null>(null);
+  const [exporting, setExporting] = useState<'docx' | 'pdf' | 'zip' | 'xlsx' | 'backup' | null>(null);
 
   useEffect(() => {
     if (!id) return;
@@ -107,6 +108,21 @@ export default function InspectionExportScreen() {
       Alert.alert(
         'Erro ao exportar o plano 5W2H',
         err instanceof Error ? err.message : 'Não foi possível gerar o arquivo XLSX.',
+      );
+    } finally {
+      setExporting(null);
+    }
+  };
+
+  const exportBackup = async () => {
+    setExporting('backup');
+    try {
+      await backupInspectionAndShare(db, id);
+    } catch (err) {
+      console.warn('Falha ao gerar o backup:', err);
+      Alert.alert(
+        'Erro ao gerar o backup',
+        err instanceof Error ? err.message : 'Não foi possível gerar o arquivo de backup.',
       );
     } finally {
       setExporting(null);
@@ -233,6 +249,29 @@ export default function InspectionExportScreen() {
             </Text>
           </View>
           {exporting === 'xlsx' ? (
+            <ActivityIndicator size="small" color={colors.primary} />
+          ) : (
+            <Ionicons name="share-outline" size={20} color={colors.primary} />
+          )}
+        </Pressable>
+
+        <Text style={[styles.sectionTitle, { color: colors.text }]}>Backup</Text>
+
+        <Pressable
+          style={[styles.exportCard, { backgroundColor: colors.surface, borderColor: colors.primary, borderWidth: 1.5 }]}
+          onPress={exportBackup}
+          disabled={exporting !== null}
+        >
+          <View style={[styles.exportIcon, { backgroundColor: colors.primaryDark }]}>
+            <Ionicons name="cloud-download-outline" size={22} color="#fff" />
+          </View>
+          <View style={styles.exportBody}>
+            <Text style={[styles.exportTitle, { color: colors.text }]}>Backup da vistoria (ZIP)</Text>
+            <Text style={[styles.exportSub, { color: colors.textSecondary }]}>
+              Dados, todas as fotos e o relatório — salve no PC, Drive, etc.
+            </Text>
+          </View>
+          {exporting === 'backup' ? (
             <ActivityIndicator size="small" color={colors.primary} />
           ) : (
             <Ionicons name="share-outline" size={20} color={colors.primary} />

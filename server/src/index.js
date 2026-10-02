@@ -130,60 +130,6 @@ app.get('/sync/pull', requireAuth, async (req, res) => {
   });
 });
 
-// ── Fotos (guardadas no Postgres/Neon) ───────────────────────────────────
-function sanitizeSegment(value) {
-  return String(value || '')
-    .replace(/[^a-zA-Z0-9._-]/g, '_')
-    .slice(0, 120);
-}
-
-// Envia uma foto (base64). Guarda no banco e devolve a chave.
-app.post('/photos', requireAuth, async (req, res) => {
-  const { inspectionId, photoId, contentType, base64 } = req.body || {};
-  if (!inspectionId || !photoId || !base64) {
-    return res.status(400).json({ error: 'inspectionId, photoId e base64 são obrigatórios.' });
-  }
-  const ext = contentType === 'image/png' ? 'png' : 'jpg';
-  const key = `photos/${req.userId}/${sanitizeSegment(inspectionId)}/${sanitizeSegment(photoId)}.${ext}`;
-  let buffer;
-  try {
-    buffer = Buffer.from(String(base64), 'base64');
-  } catch {
-    return res.status(400).json({ error: 'Imagem inválida.' });
-  }
-  if (buffer.length === 0) return res.status(400).json({ error: 'Imagem vazia.' });
-  try {
-    await pool.query(
-      `INSERT INTO photos (user_id, key, inspection_id, content_type, data, size, updated_at)
-       VALUES ($1, $2, $3, $4, $5, $6, $7)
-       ON CONFLICT (user_id, key)
-       DO UPDATE SET data = EXCLUDED.data, content_type = EXCLUDED.content_type,
-                     size = EXCLUDED.size, updated_at = EXCLUDED.updated_at`,
-      [req.userId, key, String(inspectionId), contentType || 'image/jpeg', buffer, buffer.length, Date.now()],
-    );
-    return res.status(201).json({ key, size: buffer.length });
-  } catch (err) {
-    console.error('photos upload', err);
-    return res.status(500).json({ error: 'Falha ao salvar a foto.' });
-  }
-});
-
-// Baixa uma foto pela chave.
-app.get('/photos', requireAuth, async (req, res) => {
-  const key = String(req.query.key || '');
-  if (!key.startsWith(`photos/${req.userId}/`)) {
-    return res.status(403).json({ error: 'Acesso negado.' });
-  }
-  const { rows } = await pool.query(
-    'SELECT content_type, data FROM photos WHERE user_id = $1 AND key = $2',
-    [req.userId, key],
-  );
-  if (rows.length === 0) return res.status(404).json({ error: 'Foto não encontrada.' });
-  res.setHeader('Content-Type', rows[0].content_type || 'image/jpeg');
-  res.setHeader('Cache-Control', 'private, max-age=86400');
-  return res.send(rows[0].data);
-});
-
 // Cria a conta inicial a partir de SEED_EMAIL/SEED_PASSWORD, se ainda não existir.
 async function seedUser() {
   const email = process.env.SEED_EMAIL;

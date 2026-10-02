@@ -1,9 +1,9 @@
 import type { SQLiteDatabase } from 'expo-sqlite';
-import { Packer } from 'docx';
+import { Document, Packer } from 'docx';
 import { File } from 'expo-file-system';
 import * as Sharing from 'expo-sharing';
 import { Image } from 'react-native';
-import type { InspectionItem } from '../types';
+import type { Inspection, InspectionItem } from '../types';
 import { buildChecklistDocument, type ReportArea, type ReportPhoto, type ReportStatus } from './docx-report';
 import { writeExportFile } from './export-file.service';
 import { buildFileName, formatDateBr, INSPECTION_SUFFIX, resolveEmpreendimentoName, sanitizePart } from './file-name';
@@ -98,7 +98,10 @@ async function resolveAreas(
   return areas;
 }
 
-export async function generateInspectionDocxAndShare(db: SQLiteDatabase, inspectionId: string): Promise<boolean> {
+async function buildInspectionDocxDocument(
+  db: SQLiteDatabase,
+  inspectionId: string,
+): Promise<{ doc: Document; inspection: Inspection }> {
   const svc = getInspectionService(db);
   const inspection = await svc.getInspection(inspectionId);
   const company = await svc.getCompany(inspection.companyId);
@@ -125,19 +128,32 @@ export async function generateInspectionDocxAndShare(db: SQLiteDatabase, inspect
     logo: logo ?? undefined,
   });
 
-  let b64: string;
+  return { doc, inspection };
+}
+
+/** DOCX da vistoria em base64 (reutilizado pelo compartilhamento e pelo backup). */
+export async function buildInspectionDocxBase64(
+  db: SQLiteDatabase,
+  inspectionId: string,
+): Promise<{ base64: string; inspection: Inspection }> {
+  const { doc, inspection } = await buildInspectionDocxDocument(db, inspectionId);
+  let base64: string;
   try {
-    b64 = await Packer.toBase64String(doc);
+    base64 = await Packer.toBase64String(doc);
   } catch (err) {
     console.warn('Falha ao empacotar o DOCX:', err);
     throw new Error(`Falha ao gerar o arquivo DOCX: ${err instanceof Error ? err.message : String(err)}`);
   }
+  return { base64, inspection };
+}
 
+export async function generateInspectionDocxAndShare(db: SQLiteDatabase, inspectionId: string): Promise<boolean> {
+  const { base64, inspection } = await buildInspectionDocxBase64(db, inspectionId);
   const fileName = buildFileName(
     [sanitizePart(resolveEmpreendimentoName(inspection), 'Inspecao'), INSPECTION_SUFFIX, formatDateBr(inspection.date)],
     '.docx',
   );
-  const file = await writeExportFile(fileName, b64);
+  const file = await writeExportFile(fileName, base64);
 
   if (await Sharing.isAvailableAsync()) {
     await Sharing.shareAsync(file.uri, {
