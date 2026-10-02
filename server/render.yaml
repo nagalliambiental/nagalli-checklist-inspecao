@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: checklist-cbb-api
+    runtime: node
+    plan: free
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: SEED_EMAIL
+        sync: false
+      - key: SEED_PASSWORD
+        sync: false
+      - key: SEED_NAME
+        sync: false

@@ -1,0 +1,1488 @@
+{
+  "meta": {
+    "source": "Checklist_Inspecao_CBB_Curitiba 11092026.docx",
+    "company": "CBB Indústria e Comércio de Asfaltos e Engenharia Ltda.",
+    "generatedFor": "template-cbb-curitiba"
+  },
+  "library": [
+    {
+      "id": "LIB-001",
+      "text": "Placas de sinalização de rotas de fuga e de extintores íntegras, legíveis e sem desgaste/apagamento pelo tempo."
+    },
+    {
+      "id": "LIB-002",
+      "text": "Extintor(es) de incêndio disponível(is), acessível(is), com armário/caixa de fácil abertura (sem emperramento)."
+    },
+    {
+      "id": "LIB-003",
+      "text": "Instalações elétricas (tomadas, quadros, fiação) sem fios expostos ou emendas irregulares; quadros com acesso livre, sem obstrução por materiais."
+    },
+    {
+      "id": "LIB-004",
+      "text": "Ambiente limpo e organizado, sem acúmulo de materiais."
+    },
+    {
+      "id": "LIB-005",
+      "text": "Iluminação e ventilação adequadas ao uso do ambiente."
+    },
+    {
+      "id": "LIB-006",
+      "text": "Extintor(es) de incêndio disponível(is), acessível(is), com validade aparentemente em dia (selo/lacre íntegro), com armário/caixa de fácil abertura (sem emperramento)."
+    },
+    {
+      "id": "LIB-007",
+      "text": "Instalações elétricas (tomadas, quadros, fiação) sem fios expostos ou emendas irregulares; quadros elétricos com acesso livre, sem obstrução por lixeiras ou materiais."
+    },
+    {
+      "id": "LIB-008",
+      "text": "Ambiente limpo e organizado, sem acúmulo de materiais ou papéis."
+    },
+    {
+      "id": "LIB-009",
+      "text": "Área de armazenamento temporário de resíduos de cozinha/refeitório coberta, limpa e organizada."
+    },
+    {
+      "id": "LIB-010",
+      "text": "Lixeiras de coleta seletiva íntegras, identificadas por cor/material, sem componentes danificados (rodas, tampas)."
+    },
+    {
+      "id": "LIB-011",
+      "text": "Ausência de resíduos dispostos fora das lixeiras/coletores."
+    },
+    {
+      "id": "LIB-012",
+      "text": "Bacia de contenção para armazenagem de óleo de cozinha usado íntegra e sem indícios de vazamento."
+    },
+    {
+      "id": "LIB-013",
+      "text": "Caixa de gordura do refeitório limpa, sem acúmulo excessivo de resíduos gordurosos."
+    },
+    {
+      "id": "LIB-014",
+      "text": "Pias e bancadas limpas, sem acúmulo de resíduos ou água parada."
+    },
+    {
+      "id": "LIB-015",
+      "text": "Ambiente com boas condições de higiene e conservação das instalações."
+    },
+    {
+      "id": "LIB-016",
+      "text": "Bacias de contenção dos tanques íntegras, sem quebras, trincas, rachaduras ou infiltrações nas muretas."
+    },
+    {
+      "id": "LIB-017",
+      "text": "Presença de válvula/registro de drenagem instalado em cada bacia (sem ausência do dispositivo)."
+    },
+    {
+      "id": "LIB-018",
+      "text": "Registros de drenagem das bacias mantidos fechados, exceto para esgotamento de água pluvial eventualmente acumulada."
+    },
+    {
+      "id": "LIB-019",
+      "text": "Interior das bacias de contenção livre de mato, entulho ou resíduos acumulados."
+    },
+    {
+      "id": "LIB-020",
+      "text": "Ausência de vazamentos visíveis em tanques, válvulas, flanges e tubulações."
+    },
+    {
+      "id": "LIB-021",
+      "text": "Aterramento elétrico dos tanques visualmente íntegro, sem corrosão ou rompimento aparente."
+    },
+    {
+      "id": "LIB-022",
+      "text": "Sinalização de identificação dos produtos armazenados e de risco afixada, íntegra e legível."
+    },
+    {
+      "id": "LIB-023",
+      "text": "Extintores de incêndio próximos, acessíveis, compatíveis com a classe de risco, com armário/caixa de fácil abertura (sem emperramento)."
+    },
+    {
+      "id": "LIB-024",
+      "text": "Placas de sinalização de extintores íntegras, legíveis e sem desgaste/apagamento pelo tempo."
+    },
+    {
+      "id": "LIB-025",
+      "text": "Sistema de exaustão/captação de gases da área operante, sem vazamentos aparentes."
+    },
+    {
+      "id": "LIB-026",
+      "text": "Escadas, plataformas e guarda-corpos de acesso aos tanques em bom estado de conservação."
+    },
+    {
+      "id": "LIB-027",
+      "text": "Pavimento no entorno das bacias de contenção sem buracos, afundamentos ou desníveis."
+    },
+    {
+      "id": "LIB-028",
+      "text": "Lixeiras/coletores metálicos de resíduos recicláveis em bom estado de conservação, sem amassados, tortos ou pintura excessivamente desgastada."
+    },
+    {
+      "id": "LIB-029",
+      "text": "Sistema de lavagem/tratamento de gases operante, sem vazamentos aparentes."
+    },
+    {
+      "id": "LIB-030",
+      "text": "Pontos de captação de gases na área de carga/descarga íntegros e em efetivo funcionamento."
+    },
+    {
+      "id": "LIB-031",
+      "text": "Ausência de percepção olfativa de odor fora do padrão na área de produção."
+    },
+    {
+      "id": "LIB-032",
+      "text": "Piso da área de produção e de carga/descarga limpo, sem manchas de produto ou resíduos."
+    },
+    {
+      "id": "LIB-033",
+      "text": "Sinalização de segurança (produtos, EPI obrigatório) afixada, íntegra e legível."
+    },
+    {
+      "id": "LIB-034",
+      "text": "Uso efetivo de EPI pelos colaboradores presentes na área."
+    },
+    {
+      "id": "LIB-035",
+      "text": "Quadros elétricos com acesso livre, sem obstrução por lixeiras ou materiais."
+    },
+    {
+      "id": "LIB-036",
+      "text": "Material armazenado em local coberto, protegido de umidade e intempéries."
+    },
+    {
+      "id": "LIB-037",
+      "text": "Sacaria/big bags/paletes organizados, sem rompimentos ou dispersão de material pelo piso."
+    },
+    {
+      "id": "LIB-038",
+      "text": "Ausência de acúmulo de poeira de borracha em pisos, estruturas e equipamentos."
+    },
+    {
+      "id": "LIB-039",
+      "text": "Ambiente organizado, sem materiais estranhos à atividade."
+    },
+    {
+      "id": "LIB-040",
+      "text": "Sinalização de proibição de fontes de ignição (chama aberta, cigarro) afixada, íntegra e legível."
+    },
+    {
+      "id": "LIB-041",
+      "text": "Extintor(es) de incêndio disponível(is), acessível(is), compatível com o risco de material particulado combustível, com armário/caixa de fácil abertura (sem emperramento)."
+    },
+    {
+      "id": "LIB-042",
+      "text": "Área limpa, organizada e sinalizada."
+    },
+    {
+      "id": "LIB-043",
+      "text": "Ausência de resíduos não perigosos (copos plásticos, papel, grimpa/galhos) misturados ao estoque de resíduos perigosos."
+    },
+    {
+      "id": "LIB-044",
+      "text": "Todos os tambores mantidos tampados/cobertos."
+    },
+    {
+      "id": "LIB-045",
+      "text": "Ausência de estoque de tambores ou IBCs em área descoberta."
+    },
+    {
+      "id": "LIB-046",
+      "text": "Lixeiras de resíduos perigosos em bom estado de conservação, sem sujidade excessiva e sem componentes danificados (rodas, tampas)."
+    },
+    {
+      "id": "LIB-047",
+      "text": "Conteúdo das caçambas de resíduos compatível com a sinalização/identificação afixada em cada uma."
+    },
+    {
+      "id": "LIB-048",
+      "text": "Recipientes utilizados como coletores de resíduos devidamente identificados quanto ao tipo/classe do resíduo."
+    },
+    {
+      "id": "LIB-049",
+      "text": "Produtos líquidos armazenados exclusivamente sobre bacia de contenção íntegra, sem quebras ou rachaduras."
+    },
+    {
+      "id": "LIB-050",
+      "text": "Presença de válvula/registro de drenagem instalado na bacia (sem ausência do dispositivo), mantido fechado."
+    },
+    {
+      "id": "LIB-051",
+      "text": "Interior da bacia de contenção livre de mato, entulho ou resíduos acumulados."
+    },
+    {
+      "id": "LIB-052",
+      "text": "Sinalização de risco e de EPI obrigatório afixada, íntegra e legível."
+    },
+    {
+      "id": "LIB-053",
+      "text": "Ambiente organizado, com bancadas e pias livres de resíduos acumulados."
+    },
+    {
+      "id": "LIB-054",
+      "text": "Efluentes de pias e resíduos sólidos gerados com destinação visivelmente adequada (sem lançamento direto ao solo/rede)."
+    },
+    {
+      "id": "LIB-055",
+      "text": "Reagentes e produtos químicos armazenados de forma segregada, por compatibilidade."
+    },
+    {
+      "id": "LIB-056",
+      "text": "Produtos químicos líquidos armazenados exclusivamente sobre bacia de contenção compatível com o volume armazenado."
+    },
+    {
+      "id": "LIB-057",
+      "text": "Chuveiro de emergência e lava-olhos funcionais, desobstruídos e sinalizados."
+    },
+    {
+      "id": "LIB-058",
+      "text": "Sinalização de segurança e de EPI obrigatório afixada, íntegra e legível."
+    },
+    {
+      "id": "LIB-059",
+      "text": "Caldeiras, aquecedores e queimadores identificados, sem vazamento aparente de combustível"
+    },
+    {
+      "id": "LIB-060",
+      "text": "Ausência de emissão visível de fumaça fora do padrão usual de operação."
+    },
+    {
+      "id": "LIB-061",
+      "text": "Válvulas de segurança e instrumentos de controle aparentemente íntegros e desobstruídos."
+    },
+    {
+      "id": "LIB-062",
+      "text": "Piso e entorno limpos, sem vazamento de óleo/combustível."
+    },
+    {
+      "id": "LIB-063",
+      "text": "Sinalização de risco (calor, pressão, inflamáveis) afixada, íntegra e legível."
+    },
+    {
+      "id": "LIB-064",
+      "text": "Extintor(es) de incêndio disponível(is), acessível(is), compatível com o risco, com armário/caixa de fácil abertura (sem emperramento)."
+    },
+    {
+      "id": "LIB-065",
+      "text": "Ambiente organizado, sem acúmulo de peças, resíduos ou materiais estranhos à atividade."
+    },
+    {
+      "id": "LIB-066",
+      "text": "Resíduos de manutenção (óleo usado, filtros, estopas contaminadas) armazenados sobre contenção adequada."
+    },
+    {
+      "id": "LIB-067",
+      "text": "Produtos químicos líquidos (óleos, desengraxantes) armazenados sobre bacia de contenção adequada."
+    },
+    {
+      "id": "LIB-068",
+      "text": "Uso efetivo de EPI pelos colaboradores durante atividades de manutenção."
+    },
+    {
+      "id": "LIB-069",
+      "text": "Instalações elétricas sem fios expostos ou emendas irregulares; quadros com acesso livre, sem obstrução por materiais."
+    },
+    {
+      "id": "LIB-070",
+      "text": "Piso impermeável, sem infiltração aparente de óleos e graxas para o solo."
+    },
+    {
+      "id": "LIB-071",
+      "text": "Contenção adequada para armazenamento temporário de materiais e resíduos de manutenção."
+    },
+    {
+      "id": "LIB-072",
+      "text": "Resíduos de manutenção (baterias, pneus, estopas contaminadas, embalagens) segregados e acondicionados corretamente."
+    },
+    {
+      "id": "LIB-073",
+      "text": "Ambiente organizado, sem acúmulo de sucata ou materiais estranhos à atividade."
+    },
+    {
+      "id": "LIB-074",
+      "text": "Canaletas da pista de abastecimento limpas e íntegras, sem trincas na mureta lateral."
+    },
+    {
+      "id": "LIB-075",
+      "text": "Ausência de pintura/intervenção recente não autorizada na área."
+    },
+    {
+      "id": "LIB-076",
+      "text": "Manoplas e registros associados à pista sem danos aparentes e sem vazamentos."
+    },
+    {
+      "id": "LIB-077",
+      "text": "Caixa separadora água-óleo limpa e com acesso franqueado para inspeção."
+    },
+    {
+      "id": "LIB-078",
+      "text": "Ausência de manchas ou resíduos de produto sobre a pista e entorno."
+    },
+    {
+      "id": "LIB-079",
+      "text": "Sinalização de \"proibido fumar\"/fontes de ignição e de risco afixada, íntegra e legível."
+    },
+    {
+      "id": "LIB-080",
+      "text": "Instalações sanitárias limpas e em bom estado de conservação."
+    },
+    {
+      "id": "LIB-081",
+      "text": "Ausência de infiltrações, mofo ou vazamentos hidráulicos aparentes."
+    },
+    {
+      "id": "LIB-082",
+      "text": "Iluminação e ventilação adequadas."
+    },
+    {
+      "id": "LIB-083",
+      "text": "Armários/escaninhos organizados, sem acúmulo de materiais estranhos ao uso."
+    },
+    {
+      "id": "LIB-084",
+      "text": "Ambiente limpo e organizado, sem acúmulo de materiais ou resíduos."
+    },
+    {
+      "id": "LIB-085",
+      "text": "Ausência de armazenamento indevido de produtos ou resíduos não relacionados ao uso administrativo."
+    },
+    {
+      "id": "LIB-086",
+      "text": "Rotas de fuga desobstruídas, quando aplicável."
+    },
+    {
+      "id": "LIB-087",
+      "text": "Extintor(es) de incêndio disponível(is), acessível(is), com validade aparentemente em dia, com armário/caixa de fácil abertura (sem emperramento)."
+    },
+    {
+      "id": "LIB-088",
+      "text": "Instalações elétricas sem fios expostos ou emendas irregulares; quadros elétricos com acesso livre, sem obstrução por lixeiras ou materiais."
+    },
+    {
+      "id": "LIB-089",
+      "text": "Ambiente limpo e organizado."
+    },
+    {
+      "id": "LIB-090",
+      "text": "Pavimento das vias de circulação interna e do pátio sem buracos, afundamentos ou desníveis que comprometam o tráfego."
+    },
+    {
+      "id": "LIB-091",
+      "text": "Sinalização de circulação de veículos e pedestres visível, íntegra e em bom estado."
+    },
+    {
+      "id": "LIB-092",
+      "text": "Ausência de vazamento de óleo/combustível de veículos estacionados."
+    },
+    {
+      "id": "LIB-093",
+      "text": "Piso limpo, sem manchas de produto ou areia acumulados."
+    },
+    {
+      "id": "LIB-094",
+      "text": "Contenção adequada para resíduos de manutenção (óleo usado, baterias, pneus, filtros, estopas contaminadas)."
+    },
+    {
+      "id": "LIB-095",
+      "text": "Produtos químicos líquidos armazenados sobre bacia de contenção adequada."
+    },
+    {
+      "id": "LIB-096",
+      "text": "Ausência de vazamento aparente de óleo/combustível de veículos em manutenção."
+    },
+    {
+      "id": "LIB-097",
+      "text": "Ambiente organizado, sem acúmulo de sucata."
+    },
+    {
+      "id": "LIB-098",
+      "text": "Ambiente limpo e em boas condições de conservação e higiene."
+    },
+    {
+      "id": "LIB-099",
+      "text": "Ausência de armazenamento de materiais ou resíduos incompatíveis com o uso de descanso."
+    },
+    {
+      "id": "LIB-100",
+      "text": "Mobiliário e instalações (camas/poltronas, sanitários, quando houver) em bom estado de uso."
+    }
+  ],
+  "areas": [
+    {
+      "name": "RECEPÇÃO",
+      "groups": [
+        {
+          "name": "SINALIZAÇÃO",
+          "items": [
+            {
+              "libraryId": "LIB-001",
+              "text": "Placas de sinalização de rotas de fuga e de extintores íntegras, legíveis e sem desgaste/apagamento pelo tempo."
+            }
+          ]
+        },
+        {
+          "name": "COMBATE A INCÊNDIO",
+          "items": [
+            {
+              "libraryId": "LIB-002",
+              "text": "Extintor(es) de incêndio disponível(is), acessível(is), com armário/caixa de fácil abertura (sem emperramento)."
+            }
+          ]
+        },
+        {
+          "name": "INSTALAÇÕES ELÉTRICAS",
+          "items": [
+            {
+              "libraryId": "LIB-003",
+              "text": "Instalações elétricas (tomadas, quadros, fiação) sem fios expostos ou emendas irregulares; quadros com acesso livre, sem obstrução por materiais."
+            }
+          ]
+        },
+        {
+          "name": "ORGANIZAÇÃO E LIMPEZA",
+          "items": [
+            {
+              "libraryId": "LIB-004",
+              "text": "Ambiente limpo e organizado, sem acúmulo de materiais."
+            }
+          ]
+        },
+        {
+          "name": "INFRAESTRUTURA E CONSERVAÇÃO CIVIL",
+          "items": [
+            {
+              "libraryId": "LIB-005",
+              "text": "Iluminação e ventilação adequadas ao uso do ambiente."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ESCRITÓRIO",
+      "groups": [
+        {
+          "name": "SINALIZAÇÃO",
+          "items": [
+            {
+              "libraryId": "LIB-001",
+              "text": "Placas de sinalização de rotas de fuga e de extintores íntegras, legíveis e sem desgaste/apagamento pelo tempo."
+            }
+          ]
+        },
+        {
+          "name": "COMBATE A INCÊNDIO",
+          "items": [
+            {
+              "libraryId": "LIB-006",
+              "text": "Extintor(es) de incêndio disponível(is), acessível(is), com validade aparentemente em dia (selo/lacre íntegro), com armário/caixa de fácil abertura (sem emperramento)."
+            }
+          ]
+        },
+        {
+          "name": "INSTALAÇÕES ELÉTRICAS",
+          "items": [
+            {
+              "libraryId": "LIB-007",
+              "text": "Instalações elétricas (tomadas, quadros, fiação) sem fios expostos ou emendas irregulares; quadros elétricos com acesso livre, sem obstrução por lixeiras ou materiais."
+            }
+          ]
+        },
+        {
+          "name": "ORGANIZAÇÃO E LIMPEZA",
+          "items": [
+            {
+              "libraryId": "LIB-008",
+              "text": "Ambiente limpo e organizado, sem acúmulo de materiais ou papéis."
+            }
+          ]
+        },
+        {
+          "name": "INFRAESTRUTURA E CONSERVAÇÃO CIVIL",
+          "items": [
+            {
+              "libraryId": "LIB-005",
+              "text": "Iluminação e ventilação adequadas ao uso do ambiente."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "REFEITÓRIO E COZINHA",
+      "groups": [
+        {
+          "name": "RESÍDUOS SÓLIDOS",
+          "items": [
+            {
+              "libraryId": "LIB-009",
+              "text": "Área de armazenamento temporário de resíduos de cozinha/refeitório coberta, limpa e organizada."
+            },
+            {
+              "libraryId": "LIB-010",
+              "text": "Lixeiras de coleta seletiva íntegras, identificadas por cor/material, sem componentes danificados (rodas, tampas)."
+            },
+            {
+              "libraryId": "LIB-011",
+              "text": "Ausência de resíduos dispostos fora das lixeiras/coletores."
+            }
+          ]
+        },
+        {
+          "name": "CONTENÇÃO E DRENAGEM",
+          "items": [
+            {
+              "libraryId": "LIB-012",
+              "text": "Bacia de contenção para armazenagem de óleo de cozinha usado íntegra e sem indícios de vazamento."
+            }
+          ]
+        },
+        {
+          "name": "EFLUENTES LÍQUIDOS",
+          "items": [
+            {
+              "libraryId": "LIB-013",
+              "text": "Caixa de gordura do refeitório limpa, sem acúmulo excessivo de resíduos gordurosos."
+            },
+            {
+              "libraryId": "LIB-014",
+              "text": "Pias e bancadas limpas, sem acúmulo de resíduos ou água parada."
+            }
+          ]
+        },
+        {
+          "name": "ORGANIZAÇÃO E LIMPEZA",
+          "items": [
+            {
+              "libraryId": "LIB-015",
+              "text": "Ambiente com boas condições de higiene e conservação das instalações."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PARQUE DE TANQUES PRINCIPAL",
+      "groups": [
+        {
+          "name": "CONTENÇÃO E DRENAGEM",
+          "items": [
+            {
+              "libraryId": "LIB-016",
+              "text": "Bacias de contenção dos tanques íntegras, sem quebras, trincas, rachaduras ou infiltrações nas muretas."
+            },
+            {
+              "libraryId": "LIB-017",
+              "text": "Presença de válvula/registro de drenagem instalado em cada bacia (sem ausência do dispositivo)."
+            },
+            {
+              "libraryId": "LIB-018",
+              "text": "Registros de drenagem das bacias mantidos fechados, exceto para esgotamento de água pluvial eventualmente acumulada."
+            },
+            {
+              "libraryId": "LIB-019",
+              "text": "Interior das bacias de contenção livre de mato, entulho ou resíduos acumulados."
+            },
+            {
+              "libraryId": "LIB-020",
+              "text": "Ausência de vazamentos visíveis em tanques, válvulas, flanges e tubulações."
+            }
+          ]
+        },
+        {
+          "name": "ARMAZENAMENTO DE PRODUTOS E MATERIAIS",
+          "items": [
+            {
+              "libraryId": "LIB-021",
+              "text": "Aterramento elétrico dos tanques visualmente íntegro, sem corrosão ou rompimento aparente."
+            }
+          ]
+        },
+        {
+          "name": "SINALIZAÇÃO",
+          "items": [
+            {
+              "libraryId": "LIB-022",
+              "text": "Sinalização de identificação dos produtos armazenados e de risco afixada, íntegra e legível."
+            }
+          ]
+        },
+        {
+          "name": "COMBATE A INCÊNDIO",
+          "items": [
+            {
+              "libraryId": "LIB-023",
+              "text": "Extintores de incêndio próximos, acessíveis, compatíveis com a classe de risco, com armário/caixa de fácil abertura (sem emperramento)."
+            },
+            {
+              "libraryId": "LIB-024",
+              "text": "Placas de sinalização de extintores íntegras, legíveis e sem desgaste/apagamento pelo tempo."
+            }
+          ]
+        },
+        {
+          "name": "EMISSÕES ATMOSFÉRICAS",
+          "items": [
+            {
+              "libraryId": "LIB-025",
+              "text": "Sistema de exaustão/captação de gases da área operante, sem vazamentos aparentes."
+            }
+          ]
+        },
+        {
+          "name": "INFRAESTRUTURA E CONSERVAÇÃO CIVIL",
+          "items": [
+            {
+              "libraryId": "LIB-026",
+              "text": "Escadas, plataformas e guarda-corpos de acesso aos tanques em bom estado de conservação."
+            },
+            {
+              "libraryId": "LIB-027",
+              "text": "Pavimento no entorno das bacias de contenção sem buracos, afundamentos ou desníveis."
+            }
+          ]
+        },
+        {
+          "name": "ORGANIZAÇÃO E LIMPEZA",
+          "items": [
+            {
+              "libraryId": "LIB-028",
+              "text": "Lixeiras/coletores metálicos de resíduos recicláveis em bom estado de conservação, sem amassados, tortos ou pintura excessivamente desgastada."
+            },
+            {
+              "libraryId": "LIB-011",
+              "text": "Ausência de resíduos dispostos fora das lixeiras/coletores."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PARQUE DE TANQUES DE PRODUTOS (SECUNDÁRIO)",
+      "groups": [
+        {
+          "name": "CONTENÇÃO E DRENAGEM",
+          "items": [
+            {
+              "libraryId": "LIB-016",
+              "text": "Bacias de contenção dos tanques íntegras, sem quebras, trincas, rachaduras ou infiltrações nas muretas."
+            },
+            {
+              "libraryId": "LIB-017",
+              "text": "Presença de válvula/registro de drenagem instalado em cada bacia (sem ausência do dispositivo)."
+            },
+            {
+              "libraryId": "LIB-018",
+              "text": "Registros de drenagem das bacias mantidos fechados, exceto para esgotamento de água pluvial eventualmente acumulada."
+            },
+            {
+              "libraryId": "LIB-019",
+              "text": "Interior das bacias de contenção livre de mato, entulho ou resíduos acumulados."
+            },
+            {
+              "libraryId": "LIB-020",
+              "text": "Ausência de vazamentos visíveis em tanques, válvulas, flanges e tubulações."
+            }
+          ]
+        },
+        {
+          "name": "ARMAZENAMENTO DE PRODUTOS E MATERIAIS",
+          "items": [
+            {
+              "libraryId": "LIB-021",
+              "text": "Aterramento elétrico dos tanques visualmente íntegro, sem corrosão ou rompimento aparente."
+            }
+          ]
+        },
+        {
+          "name": "SINALIZAÇÃO",
+          "items": [
+            {
+              "libraryId": "LIB-022",
+              "text": "Sinalização de identificação dos produtos armazenados e de risco afixada, íntegra e legível."
+            }
+          ]
+        },
+        {
+          "name": "COMBATE A INCÊNDIO",
+          "items": [
+            {
+              "libraryId": "LIB-023",
+              "text": "Extintores de incêndio próximos, acessíveis, compatíveis com a classe de risco, com armário/caixa de fácil abertura (sem emperramento)."
+            }
+          ]
+        },
+        {
+          "name": "INFRAESTRUTURA E CONSERVAÇÃO CIVIL",
+          "items": [
+            {
+              "libraryId": "LIB-026",
+              "text": "Escadas, plataformas e guarda-corpos de acesso aos tanques em bom estado de conservação."
+            },
+            {
+              "libraryId": "LIB-027",
+              "text": "Pavimento no entorno das bacias de contenção sem buracos, afundamentos ou desníveis."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "FÁBRICA (produção / carga e descarga)",
+      "groups": [
+        {
+          "name": "EMISSÕES ATMOSFÉRICAS",
+          "items": [
+            {
+              "libraryId": "LIB-029",
+              "text": "Sistema de lavagem/tratamento de gases operante, sem vazamentos aparentes."
+            },
+            {
+              "libraryId": "LIB-030",
+              "text": "Pontos de captação de gases na área de carga/descarga íntegros e em efetivo funcionamento."
+            },
+            {
+              "libraryId": "LIB-031",
+              "text": "Ausência de percepção olfativa de odor fora do padrão na área de produção."
+            }
+          ]
+        },
+        {
+          "name": "ORGANIZAÇÃO E LIMPEZA",
+          "items": [
+            {
+              "libraryId": "LIB-032",
+              "text": "Piso da área de produção e de carga/descarga limpo, sem manchas de produto ou resíduos."
+            },
+            {
+              "libraryId": "LIB-011",
+              "text": "Ausência de resíduos dispostos fora das lixeiras/coletores."
+            }
+          ]
+        },
+        {
+          "name": "SINALIZAÇÃO",
+          "items": [
+            {
+              "libraryId": "LIB-001",
+              "text": "Placas de sinalização de rotas de fuga e de extintores íntegras, legíveis e sem desgaste/apagamento pelo tempo."
+            },
+            {
+              "libraryId": "LIB-033",
+              "text": "Sinalização de segurança (produtos, EPI obrigatório) afixada, íntegra e legível."
+            }
+          ]
+        },
+        {
+          "name": "COMBATE A INCÊNDIO",
+          "items": [
+            {
+              "libraryId": "LIB-002",
+              "text": "Extintor(es) de incêndio disponível(is), acessível(is), com armário/caixa de fácil abertura (sem emperramento)."
+            }
+          ]
+        },
+        {
+          "name": "SEGURANÇA DO TRABALHO / EPI",
+          "items": [
+            {
+              "libraryId": "LIB-034",
+              "text": "Uso efetivo de EPI pelos colaboradores presentes na área."
+            }
+          ]
+        },
+        {
+          "name": "INSTALAÇÕES ELÉTRICAS",
+          "items": [
+            {
+              "libraryId": "LIB-035",
+              "text": "Quadros elétricos com acesso livre, sem obstrução por lixeiras ou materiais."
+            }
+          ]
+        },
+        {
+          "name": "CONTENÇÃO E DRENAGEM",
+          "items": [
+            {
+              "libraryId": "LIB-016",
+              "text": "Bacias de contenção dos tanques íntegras, sem quebras, trincas, rachaduras ou infiltrações nas muretas."
+            },
+            {
+              "libraryId": "LIB-017",
+              "text": "Presença de válvula/registro de drenagem instalado em cada bacia (sem ausência do dispositivo)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ARMAZÉM DE PÓ DE BORRACHA",
+      "groups": [
+        {
+          "name": "ARMAZENAMENTO DE PRODUTOS E MATERIAIS",
+          "items": [
+            {
+              "libraryId": "LIB-036",
+              "text": "Material armazenado em local coberto, protegido de umidade e intempéries."
+            },
+            {
+              "libraryId": "LIB-037",
+              "text": "Sacaria/big bags/paletes organizados, sem rompimentos ou dispersão de material pelo piso."
+            }
+          ]
+        },
+        {
+          "name": "ORGANIZAÇÃO E LIMPEZA",
+          "items": [
+            {
+              "libraryId": "LIB-038",
+              "text": "Ausência de acúmulo de poeira de borracha em pisos, estruturas e equipamentos."
+            },
+            {
+              "libraryId": "LIB-039",
+              "text": "Ambiente organizado, sem materiais estranhos à atividade."
+            }
+          ]
+        },
+        {
+          "name": "SINALIZAÇÃO",
+          "items": [
+            {
+              "libraryId": "LIB-040",
+              "text": "Sinalização de proibição de fontes de ignição (chama aberta, cigarro) afixada, íntegra e legível."
+            }
+          ]
+        },
+        {
+          "name": "COMBATE A INCÊNDIO",
+          "items": [
+            {
+              "libraryId": "LIB-041",
+              "text": "Extintor(es) de incêndio disponível(is), acessível(is), compatível com o risco de material particulado combustível, com armário/caixa de fácil abertura (sem emperramento)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CENTRAL DE RESÍDUOS PERIGOSOS E CAÇAMBAS",
+      "groups": [
+        {
+          "name": "RESÍDUOS SÓLIDOS",
+          "items": [
+            {
+              "libraryId": "LIB-042",
+              "text": "Área limpa, organizada e sinalizada."
+            },
+            {
+              "libraryId": "LIB-043",
+              "text": "Ausência de resíduos não perigosos (copos plásticos, papel, grimpa/galhos) misturados ao estoque de resíduos perigosos."
+            },
+            {
+              "libraryId": "LIB-044",
+              "text": "Todos os tambores mantidos tampados/cobertos."
+            },
+            {
+              "libraryId": "LIB-045",
+              "text": "Ausência de estoque de tambores ou IBCs em área descoberta."
+            },
+            {
+              "libraryId": "LIB-046",
+              "text": "Lixeiras de resíduos perigosos em bom estado de conservação, sem sujidade excessiva e sem componentes danificados (rodas, tampas)."
+            },
+            {
+              "libraryId": "LIB-047",
+              "text": "Conteúdo das caçambas de resíduos compatível com a sinalização/identificação afixada em cada uma."
+            },
+            {
+              "libraryId": "LIB-048",
+              "text": "Recipientes utilizados como coletores de resíduos devidamente identificados quanto ao tipo/classe do resíduo."
+            },
+            {
+              "libraryId": "LIB-011",
+              "text": "Ausência de resíduos dispostos fora das lixeiras/coletores."
+            }
+          ]
+        },
+        {
+          "name": "CONTENÇÃO E DRENAGEM",
+          "items": [
+            {
+              "libraryId": "LIB-049",
+              "text": "Produtos líquidos armazenados exclusivamente sobre bacia de contenção íntegra, sem quebras ou rachaduras."
+            },
+            {
+              "libraryId": "LIB-050",
+              "text": "Presença de válvula/registro de drenagem instalado na bacia (sem ausência do dispositivo), mantido fechado."
+            },
+            {
+              "libraryId": "LIB-051",
+              "text": "Interior da bacia de contenção livre de mato, entulho ou resíduos acumulados."
+            }
+          ]
+        },
+        {
+          "name": "SINALIZAÇÃO",
+          "items": [
+            {
+              "libraryId": "LIB-052",
+              "text": "Sinalização de risco e de EPI obrigatório afixada, íntegra e legível."
+            }
+          ]
+        },
+        {
+          "name": "COMBATE A INCÊNDIO",
+          "items": [
+            {
+              "libraryId": "LIB-002",
+              "text": "Extintor(es) de incêndio disponível(is), acessível(is), com armário/caixa de fácil abertura (sem emperramento)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LABORATÓRIO",
+      "groups": [
+        {
+          "name": "ORGANIZAÇÃO E LIMPEZA",
+          "items": [
+            {
+              "libraryId": "LIB-053",
+              "text": "Ambiente organizado, com bancadas e pias livres de resíduos acumulados."
+            }
+          ]
+        },
+        {
+          "name": "EFLUENTES LÍQUIDOS",
+          "items": [
+            {
+              "libraryId": "LIB-054",
+              "text": "Efluentes de pias e resíduos sólidos gerados com destinação visivelmente adequada (sem lançamento direto ao solo/rede)."
+            }
+          ]
+        },
+        {
+          "name": "ARMAZENAMENTO DE PRODUTOS E MATERIAIS",
+          "items": [
+            {
+              "libraryId": "LIB-055",
+              "text": "Reagentes e produtos químicos armazenados de forma segregada, por compatibilidade."
+            }
+          ]
+        },
+        {
+          "name": "CONTENÇÃO E DRENAGEM",
+          "items": [
+            {
+              "libraryId": "LIB-056",
+              "text": "Produtos químicos líquidos armazenados exclusivamente sobre bacia de contenção compatível com o volume armazenado."
+            }
+          ]
+        },
+        {
+          "name": "SEGURANÇA DO TRABALHO / EPI",
+          "items": [
+            {
+              "libraryId": "LIB-057",
+              "text": "Chuveiro de emergência e lava-olhos funcionais, desobstruídos e sinalizados."
+            }
+          ]
+        },
+        {
+          "name": "SINALIZAÇÃO",
+          "items": [
+            {
+              "libraryId": "LIB-058",
+              "text": "Sinalização de segurança e de EPI obrigatório afixada, íntegra e legível."
+            }
+          ]
+        },
+        {
+          "name": "COMBATE A INCÊNDIO",
+          "items": [
+            {
+              "libraryId": "LIB-002",
+              "text": "Extintor(es) de incêndio disponível(is), acessível(is), com armário/caixa de fácil abertura (sem emperramento)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ÁREA DE CALDEIRAS",
+      "groups": [
+        {
+          "name": "EMISSÕES ATMOSFÉRICAS",
+          "items": [
+            {
+              "libraryId": "LIB-059",
+              "text": "Caldeiras, aquecedores e queimadores identificados, sem vazamento aparente de combustível"
+            },
+            {
+              "libraryId": "LIB-060",
+              "text": "Ausência de emissão visível de fumaça fora do padrão usual de operação."
+            }
+          ]
+        },
+        {
+          "name": "INFRAESTRUTURA E CONSERVAÇÃO CIVIL",
+          "items": [
+            {
+              "libraryId": "LIB-061",
+              "text": "Válvulas de segurança e instrumentos de controle aparentemente íntegros e desobstruídos."
+            },
+            {
+              "libraryId": "LIB-062",
+              "text": "Piso e entorno limpos, sem vazamento de óleo/combustível."
+            }
+          ]
+        },
+        {
+          "name": "SINALIZAÇÃO",
+          "items": [
+            {
+              "libraryId": "LIB-063",
+              "text": "Sinalização de risco (calor, pressão, inflamáveis) afixada, íntegra e legível."
+            }
+          ]
+        },
+        {
+          "name": "COMBATE A INCÊNDIO",
+          "items": [
+            {
+              "libraryId": "LIB-064",
+              "text": "Extintor(es) de incêndio disponível(is), acessível(is), compatível com o risco, com armário/caixa de fácil abertura (sem emperramento)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "OFICINA DE MANUTENÇÃO DA CALDEIRA",
+      "groups": [
+        {
+          "name": "ORGANIZAÇÃO E LIMPEZA",
+          "items": [
+            {
+              "libraryId": "LIB-065",
+              "text": "Ambiente organizado, sem acúmulo de peças, resíduos ou materiais estranhos à atividade."
+            }
+          ]
+        },
+        {
+          "name": "RESÍDUOS SÓLIDOS",
+          "items": [
+            {
+              "libraryId": "LIB-066",
+              "text": "Resíduos de manutenção (óleo usado, filtros, estopas contaminadas) armazenados sobre contenção adequada."
+            }
+          ]
+        },
+        {
+          "name": "CONTENÇÃO E DRENAGEM",
+          "items": [
+            {
+              "libraryId": "LIB-067",
+              "text": "Produtos químicos líquidos (óleos, desengraxantes) armazenados sobre bacia de contenção adequada."
+            }
+          ]
+        },
+        {
+          "name": "SEGURANÇA DO TRABALHO / EPI",
+          "items": [
+            {
+              "libraryId": "LIB-068",
+              "text": "Uso efetivo de EPI pelos colaboradores durante atividades de manutenção."
+            }
+          ]
+        },
+        {
+          "name": "COMBATE A INCÊNDIO",
+          "items": [
+            {
+              "libraryId": "LIB-002",
+              "text": "Extintor(es) de incêndio disponível(is), acessível(is), com armário/caixa de fácil abertura (sem emperramento)."
+            }
+          ]
+        },
+        {
+          "name": "INSTALAÇÕES ELÉTRICAS",
+          "items": [
+            {
+              "libraryId": "LIB-069",
+              "text": "Instalações elétricas sem fios expostos ou emendas irregulares; quadros com acesso livre, sem obstrução por materiais."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ÁREA DE MANUTENÇÃO MECÂNICA",
+      "groups": [
+        {
+          "name": "INFRAESTRUTURA E CONSERVAÇÃO CIVIL",
+          "items": [
+            {
+              "libraryId": "LIB-070",
+              "text": "Piso impermeável, sem infiltração aparente de óleos e graxas para o solo."
+            }
+          ]
+        },
+        {
+          "name": "CONTENÇÃO E DRENAGEM",
+          "items": [
+            {
+              "libraryId": "LIB-071",
+              "text": "Contenção adequada para armazenamento temporário de materiais e resíduos de manutenção."
+            }
+          ]
+        },
+        {
+          "name": "RESÍDUOS SÓLIDOS",
+          "items": [
+            {
+              "libraryId": "LIB-072",
+              "text": "Resíduos de manutenção (baterias, pneus, estopas contaminadas, embalagens) segregados e acondicionados corretamente."
+            }
+          ]
+        },
+        {
+          "name": "SINALIZAÇÃO",
+          "items": [
+            {
+              "libraryId": "LIB-058",
+              "text": "Sinalização de segurança e de EPI obrigatório afixada, íntegra e legível."
+            }
+          ]
+        },
+        {
+          "name": "COMBATE A INCÊNDIO",
+          "items": [
+            {
+              "libraryId": "LIB-002",
+              "text": "Extintor(es) de incêndio disponível(is), acessível(is), com armário/caixa de fácil abertura (sem emperramento)."
+            }
+          ]
+        },
+        {
+          "name": "ORGANIZAÇÃO E LIMPEZA",
+          "items": [
+            {
+              "libraryId": "LIB-073",
+              "text": "Ambiente organizado, sem acúmulo de sucata ou materiais estranhos à atividade."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PONTO DE ABASTECIMENTO DE COMBUSTÍVEIS",
+      "groups": [
+        {
+          "name": "INFRAESTRUTURA E CONSERVAÇÃO CIVIL",
+          "items": [
+            {
+              "libraryId": "LIB-074",
+              "text": "Canaletas da pista de abastecimento limpas e íntegras, sem trincas na mureta lateral."
+            },
+            {
+              "libraryId": "LIB-075",
+              "text": "Ausência de pintura/intervenção recente não autorizada na área."
+            }
+          ]
+        },
+        {
+          "name": "CONTENÇÃO E DRENAGEM",
+          "items": [
+            {
+              "libraryId": "LIB-076",
+              "text": "Manoplas e registros associados à pista sem danos aparentes e sem vazamentos."
+            }
+          ]
+        },
+        {
+          "name": "EFLUENTES LÍQUIDOS",
+          "items": [
+            {
+              "libraryId": "LIB-077",
+              "text": "Caixa separadora água-óleo limpa e com acesso franqueado para inspeção."
+            }
+          ]
+        },
+        {
+          "name": "ORGANIZAÇÃO E LIMPEZA",
+          "items": [
+            {
+              "libraryId": "LIB-078",
+              "text": "Ausência de manchas ou resíduos de produto sobre a pista e entorno."
+            }
+          ]
+        },
+        {
+          "name": "SINALIZAÇÃO",
+          "items": [
+            {
+              "libraryId": "LIB-079",
+              "text": "Sinalização de \"proibido fumar\"/fontes de ignição e de risco afixada, íntegra e legível."
+            }
+          ]
+        },
+        {
+          "name": "COMBATE A INCÊNDIO",
+          "items": [
+            {
+              "libraryId": "LIB-064",
+              "text": "Extintor(es) de incêndio disponível(is), acessível(is), compatível com o risco, com armário/caixa de fácil abertura (sem emperramento)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "VESTIÁRIO DA FÁBRICA",
+      "groups": [
+        {
+          "name": "INFRAESTRUTURA E CONSERVAÇÃO CIVIL",
+          "items": [
+            {
+              "libraryId": "LIB-080",
+              "text": "Instalações sanitárias limpas e em bom estado de conservação."
+            },
+            {
+              "libraryId": "LIB-081",
+              "text": "Ausência de infiltrações, mofo ou vazamentos hidráulicos aparentes."
+            },
+            {
+              "libraryId": "LIB-082",
+              "text": "Iluminação e ventilação adequadas."
+            }
+          ]
+        },
+        {
+          "name": "ORGANIZAÇÃO E LIMPEZA",
+          "items": [
+            {
+              "libraryId": "LIB-083",
+              "text": "Armários/escaninhos organizados, sem acúmulo de materiais estranhos ao uso."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ESCRITÓRIO ANTIGA CONTABILIDADE",
+      "groups": [
+        {
+          "name": "ORGANIZAÇÃO E LIMPEZA",
+          "items": [
+            {
+              "libraryId": "LIB-084",
+              "text": "Ambiente limpo e organizado, sem acúmulo de materiais ou resíduos."
+            },
+            {
+              "libraryId": "LIB-085",
+              "text": "Ausência de armazenamento indevido de produtos ou resíduos não relacionados ao uso administrativo."
+            }
+          ]
+        },
+        {
+          "name": "SINALIZAÇÃO",
+          "items": [
+            {
+              "libraryId": "LIB-086",
+              "text": "Rotas de fuga desobstruídas, quando aplicável."
+            }
+          ]
+        },
+        {
+          "name": "INSTALAÇÕES ELÉTRICAS",
+          "items": [
+            {
+              "libraryId": "LIB-069",
+              "text": "Instalações elétricas sem fios expostos ou emendas irregulares; quadros com acesso livre, sem obstrução por materiais."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ESCRITÓRIO TRANSPORTADORA",
+      "groups": [
+        {
+          "name": "SINALIZAÇÃO",
+          "items": [
+            {
+              "libraryId": "LIB-001",
+              "text": "Placas de sinalização de rotas de fuga e de extintores íntegras, legíveis e sem desgaste/apagamento pelo tempo."
+            }
+          ]
+        },
+        {
+          "name": "COMBATE A INCÊNDIO",
+          "items": [
+            {
+              "libraryId": "LIB-087",
+              "text": "Extintor(es) de incêndio disponível(is), acessível(is), com validade aparentemente em dia, com armário/caixa de fácil abertura (sem emperramento)."
+            }
+          ]
+        },
+        {
+          "name": "INSTALAÇÕES ELÉTRICAS",
+          "items": [
+            {
+              "libraryId": "LIB-088",
+              "text": "Instalações elétricas sem fios expostos ou emendas irregulares; quadros elétricos com acesso livre, sem obstrução por lixeiras ou materiais."
+            }
+          ]
+        },
+        {
+          "name": "ORGANIZAÇÃO E LIMPEZA",
+          "items": [
+            {
+              "libraryId": "LIB-089",
+              "text": "Ambiente limpo e organizado."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PÁTIO DE ESTACIONAMENTO",
+      "groups": [
+        {
+          "name": "TRÂNSITO E CIRCULAÇÃO",
+          "items": [
+            {
+              "libraryId": "LIB-090",
+              "text": "Pavimento das vias de circulação interna e do pátio sem buracos, afundamentos ou desníveis que comprometam o tráfego."
+            },
+            {
+              "libraryId": "LIB-091",
+              "text": "Sinalização de circulação de veículos e pedestres visível, íntegra e em bom estado."
+            }
+          ]
+        },
+        {
+          "name": "ORGANIZAÇÃO E LIMPEZA",
+          "items": [
+            {
+              "libraryId": "LIB-092",
+              "text": "Ausência de vazamento de óleo/combustível de veículos estacionados."
+            },
+            {
+              "libraryId": "LIB-093",
+              "text": "Piso limpo, sem manchas de produto ou areia acumulados."
+            }
+          ]
+        },
+        {
+          "name": "COMBATE A INCÊNDIO",
+          "items": [
+            {
+              "libraryId": "LIB-002",
+              "text": "Extintor(es) de incêndio disponível(is), acessível(is), com armário/caixa de fácil abertura (sem emperramento)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "OFICINA DA TRANSPORTADORA",
+      "groups": [
+        {
+          "name": "INFRAESTRUTURA E CONSERVAÇÃO CIVIL",
+          "items": [
+            {
+              "libraryId": "LIB-070",
+              "text": "Piso impermeável, sem infiltração aparente de óleos e graxas para o solo."
+            }
+          ]
+        },
+        {
+          "name": "CONTENÇÃO E DRENAGEM",
+          "items": [
+            {
+              "libraryId": "LIB-094",
+              "text": "Contenção adequada para resíduos de manutenção (óleo usado, baterias, pneus, filtros, estopas contaminadas)."
+            },
+            {
+              "libraryId": "LIB-095",
+              "text": "Produtos químicos líquidos armazenados sobre bacia de contenção adequada."
+            },
+            {
+              "libraryId": "LIB-096",
+              "text": "Ausência de vazamento aparente de óleo/combustível de veículos em manutenção."
+            }
+          ]
+        },
+        {
+          "name": "SINALIZAÇÃO",
+          "items": [
+            {
+              "libraryId": "LIB-058",
+              "text": "Sinalização de segurança e de EPI obrigatório afixada, íntegra e legível."
+            }
+          ]
+        },
+        {
+          "name": "COMBATE A INCÊNDIO",
+          "items": [
+            {
+              "libraryId": "LIB-002",
+              "text": "Extintor(es) de incêndio disponível(is), acessível(is), com armário/caixa de fácil abertura (sem emperramento)."
+            }
+          ]
+        },
+        {
+          "name": "ORGANIZAÇÃO E LIMPEZA",
+          "items": [
+            {
+              "libraryId": "LIB-097",
+              "text": "Ambiente organizado, sem acúmulo de sucata."
+            }
+          ]
+        },
+        {
+          "name": "RESÍDUOS SÓLIDOS",
+          "items": [
+            {
+              "libraryId": "LIB-072",
+              "text": "Resíduos de manutenção (baterias, pneus, estopas contaminadas, embalagens) segregados e acondicionados corretamente."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ÁREA DE DESCANSO DE MOTORISTAS",
+      "groups": [
+        {
+          "name": "ORGANIZAÇÃO E LIMPEZA",
+          "items": [
+            {
+              "libraryId": "LIB-098",
+              "text": "Ambiente limpo e em boas condições de conservação e higiene."
+            },
+            {
+              "libraryId": "LIB-099",
+              "text": "Ausência de armazenamento de materiais ou resíduos incompatíveis com o uso de descanso."
+            }
+          ]
+        },
+        {
+          "name": "INFRAESTRUTURA E CONSERVAÇÃO CIVIL",
+          "items": [
+            {
+              "libraryId": "LIB-100",
+              "text": "Mobiliário e instalações (camas/poltronas, sanitários, quando houver) em bom estado de uso."
+            },
+            {
+              "libraryId": "LIB-082",
+              "text": "Iluminação e ventilação adequadas."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
