@@ -17,6 +17,7 @@ import { useTheme } from '../src/contexts/ThemeContext';
 import { AppLogo } from '../src/components/AppHeader';
 import { DEFAULT_INSPECTOR_NAME, getInspectorName, setInspectorName } from '../src/services/settings.service';
 import { getCloudUser, logout, syncNow, type CloudUser } from '../src/services/cloud.service';
+import { backupAllAndShare } from '../src/services/backup.service';
 
 export default function SettingsScreen() {
   const router = useRouter();
@@ -27,6 +28,19 @@ export default function SettingsScreen() {
   const [saving, setSaving] = useState(false);
   const [cloudUser, setCloudUser] = useState<CloudUser | null>(null);
   const [syncing, setSyncing] = useState(false);
+  const [backingUp, setBackingUp] = useState(false);
+
+  const runBackup = useCallback(async () => {
+    setBackingUp(true);
+    try {
+      const result = await backupAllAndShare(db);
+      Alert.alert('Backup gerado', `${result.inspections} vistorias e ${result.photos} fotos no arquivo.`);
+    } catch (err) {
+      Alert.alert('Falha no backup', err instanceof Error ? err.message : String(err));
+    } finally {
+      setBackingUp(false);
+    }
+  }, [db]);
 
   useEffect(() => {
     getInspectorName(db).then((value) => {
@@ -156,6 +170,27 @@ export default function SettingsScreen() {
               </Pressable>
             </>
           )}
+        </View>
+
+        <View style={[styles.formCard, { backgroundColor: colors.surface, borderColor: colors.border }]}>
+          <Text style={[styles.fieldLabel, { color: colors.textSecondary }]}>Backup</Text>
+          <Text style={[styles.hint, { color: colors.textLight }]}>
+            Gera um ZIP com todas as vistorias, empreendimentos, ações e fotos. Você escolhe onde salvar.
+          </Text>
+          <Pressable
+            style={[styles.cloudBtn, { backgroundColor: colors.primary, opacity: backingUp ? 0.6 : 1 }]}
+            onPress={runBackup}
+            disabled={backingUp}
+          >
+            {backingUp ? (
+              <ActivityIndicator color={colors.white} />
+            ) : (
+              <>
+                <Ionicons name="archive-outline" size={17} color={colors.white} />
+                <Text style={styles.cloudBtnText}>Gerar backup geral (ZIP)</Text>
+              </>
+            )}
+          </Pressable>
         </View>
       </ScrollView>
 
