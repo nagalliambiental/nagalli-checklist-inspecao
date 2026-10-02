@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { pool } = require('./db');
 const { runMigrations } = require('./migrate');
+const { isConfigured: isR2Configured, presignUpload, presignDownload } = require('./r2');
 
 const app = express();
 app.use(cors());
@@ -128,6 +129,45 @@ app.get('/sync/pull', requireAuth, async (req, res) => {
       updatedAt: Number(r.updated_at),
     })),
   });
+});
+
+// ── Fotos (Cloudflare R2) ────────────────────────────────────────────────
+function sanitizeSegment(value) {
+  return String(value || '')
+    .replace(/[^a-zA-Z0-9._-]/g, '_')
+    .slice(0, 120);
+}
+
+app.post('/photos/presign-upload', requireAuth, async (req, res) => {
+  if (!isR2Configured()) return res.status(503).json({ error: 'Storage de fotos não configurado.' });
+  const { inspectionId, photoId, contentType } = req.body || {};
+  if (!inspectionId || !photoId) {
+    return res.status(400).json({ error: 'inspectionId e photoId são obrigatórios.' });
+  }
+  const ext = contentType === 'image/png' ? 'png' : 'jpg';
+  const key = `photos/${req.userId}/${sanitizeSegment(inspectionId)}/${sanitizeSegment(photoId)}.${ext}`;
+  try {
+    const uploadUrl = await presignUpload(key, contentType);
+    return res.json({ key, uploadUrl });
+  } catch (err) {
+    console.error('presign-upload', err);
+    return res.status(500).json({ error: 'Falha ao preparar o envio da foto.' });
+  }
+});
+
+app.post('/photos/presign-download', requireAuth, async (req, res) => {
+  if (!isR2Configured()) return res.status(503).json({ error: 'Storage de fotos não configurado.' });
+  const key = String(req.body?.key || '');
+  if (!key.startsWith(`photos/${req.userId}/`)) {
+    return res.status(403).json({ error: 'Acesso negado.' });
+  }
+  try {
+    const url = await presignDownload(key);
+    return res.json({ url });
+  } catch (err) {
+    console.error('presign-download', err);
+    return res.status(500).json({ error: 'Falha ao gerar o link da foto.' });
+  }
 });
 
 // Cria a conta inicial a partir de SEED_EMAIL/SEED_PASSWORD, se ainda não existir.
