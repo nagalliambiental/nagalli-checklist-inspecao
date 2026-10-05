@@ -85,13 +85,6 @@ export async function generate5w2hAndShare(db: SQLiteDatabase, date: string): Pr
           priority: 'Média',
           status: 'A iniciar',
         });
-      } else if (item.status === 'NA') {
-        reassessRows.push({
-          area,
-          item: item.label,
-          reason: item.notes?.trim() || 'Não avaliado no ato da vistoria.',
-          reassess: item.reassessDate ? item.reassessDate.split('-').reverse().join('/') : 'Próxima vistoria',
-        });
       }
     }
   }

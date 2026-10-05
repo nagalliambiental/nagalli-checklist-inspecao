@@ -4,6 +4,7 @@ import { File } from 'expo-file-system';
 import * as Sharing from 'expo-sharing';
 import { Image } from 'react-native';
 import type { Inspection, InspectionItem } from '../types';
+import { NAGALLI_LOGO_BASE64 } from '../constants/logo';
 import { buildChecklistDocument, type ReportArea, type ReportPhoto, type ReportStatus } from './docx-report';
 import { writeExportFile } from './export-file.service';
 import { buildFileName, formatDateBr, INSPECTION_SUFFIX, resolveEmpreendimentoName, sanitizePart } from './file-name';
@@ -32,21 +33,23 @@ async function loadPhoto(uri: string): Promise<ReportPhoto | null> {
   }
 }
 
-let logoCache: Promise<ReportPhoto | null> | null = null;
+let logoCache: ReportPhoto | null | undefined;
 
-async function loadLogo(): Promise<ReportPhoto | null> {
-  if (!logoCache) {
-    logoCache = (async () => {
-      try {
-        const src = Image.resolveAssetSource(require('../../assets/nagalli-logo.png'));
-        const file = new File(src.uri);
-        if (!file.exists) return null;
-        const [data, size] = await Promise.all([file.bytes(), imageSize(src.uri)]);
-        return { data, width: size.width || 40, height: size.height || 40, type: 'png' as const };
-      } catch {
-        return null;
-      }
-    })();
+function base64ToBytes(base64: string): Uint8Array {
+  const binary = atob(base64);
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i += 1) bytes[i] = binary.charCodeAt(i);
+  return bytes;
+}
+
+/** Logo embutida no código, para não depender da leitura do asset em runtime. */
+function loadLogo(): ReportPhoto | null {
+  if (logoCache === undefined) {
+    try {
+      logoCache = { data: base64ToBytes(NAGALLI_LOGO_BASE64), width: 192, height: 192, type: 'png' };
+    } catch {
+      logoCache = null;
+    }
   }
   return logoCache;
 }
@@ -115,7 +118,7 @@ async function buildInspectionDocxDocument(
   const groups = await svc.getInspectionItemGroups(inspectionId);
   const declaredAreas = (inspection.areas ?? []).map((a) => a.name);
   const areas = await resolveAreas(inspection.items ?? [], declaredAreas, groups);
-  const logo = await loadLogo();
+  const logo = loadLogo();
 
   const doc = buildChecklistDocument({
     companyName: resolveEmpreendimentoName(inspection) || company?.name || '',

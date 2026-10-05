@@ -191,6 +191,8 @@ async function applyAction(db: SQLiteDatabase, doc: SyncDoc): Promise<void> {
   const local = await localUpdatedAt(db, 'action_items', doc.id);
   if (local > doc.updatedAt) return;
   const a: any = doc.data;
+  // N/A é "não aplicável": não gera ação. Ignora docs antigos de N/A da nuvem.
+  if (a?.type === 'NA') return;
   await db.runAsync(
     `INSERT OR REPLACE INTO action_items
        (id, type, inspection_id, item_id, company_name, area_name, item_label, description,

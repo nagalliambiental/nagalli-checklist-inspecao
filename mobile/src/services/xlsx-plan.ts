@@ -189,5 +189,9 @@ function buildReassessSheet(input: PlanWorkbookInput): SheetSpec {
 }
 
 export function buildPlanWorkbook(input: PlanWorkbookInput): Uint8Array {
-  return buildXlsx([buildPlanSheet(input), buildReassessSheet(input)]);
+  const sheets = [buildPlanSheet(input)];
+  // A aba de reavaliação só existe se houver itens para reavaliar (N/A não gera
+  // pendência, então normalmente não há).
+  if (input.reassessRows.length > 0) sheets.push(buildReassessSheet(input));
+  return buildXlsx(sheets);
 }
