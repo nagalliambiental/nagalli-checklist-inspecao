@@ -68,7 +68,15 @@ export async function generate5w2hAndShare(db: SQLiteDatabase, date: string): Pr
   const actions = await actionSvc.getActionsByInspectionIds(inspections.map((i) => i.id));
   const ncActions = actions.filter((a) => a.type === 'NC');
   const planRows: PlanRow[] = ncActions.map(ncFromAction);
-  const reassessRows: ReassessRow[] = [];
+  // Reavaliações: somente NC marcadas (com data) para rever depois. N/A não entra.
+  const reassessRows: ReassessRow[] = ncActions
+    .filter((a) => (a.reassessDate ?? '').trim() !== '')
+    .map((a) => ({
+      area: areaLabel(a.areaName ?? ''),
+      item: a.itemLabel,
+      reason: a.description?.trim() || a.actionWhat?.trim() || 'Reavaliação solicitada.',
+      reassess: a.reassessDate.split('-').reverse().join('/'),
+    }));
 
   for (const insp of inspections) {
     for (const item of insp.items ?? []) {
@@ -97,11 +105,10 @@ export async function generate5w2hAndShare(db: SQLiteDatabase, date: string): Pr
       'Os valores de investimento são estimativas preliminares de engenharia (faixa mín.–máx.), sujeitas a cotação formal ' +
       'antes da execução. Responsáveis indicados por função/área; a empresa deve nomear o colaborador titular.',
     planRows,
-    reassessTitle: 'ITENS NÃO AVALIADOS / EM USO NA DATA DA VISTORIA – REAVALIAR NA PRÓXIMA INSPEÇÃO',
+    reassessTitle: 'ITENS PARA REAVALIAÇÃO – REVER NA PRÓXIMA INSPEÇÃO',
     reassessDescription:
-      `Itens marcados como N/A no checklist de ${titleDate} por não terem sido avaliados no momento da vistoria ` +
-      '(extintores em processo de substituição, ambiente em uso, etc.). Não configuram não conformidade confirmada, ' +
-      'mas exigem verificação na próxima inspeção de campo.',
+      'Itens marcados para reavaliação. São não conformidades que a equipe optou por rever posteriormente. ' +
+      'A data indicada é o prazo sugerido para a nova verificação.',
     reassessRows,
   });
 

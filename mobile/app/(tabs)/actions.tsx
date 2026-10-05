@@ -22,6 +22,7 @@ export default function ActionsScreen() {
   const [actions, setActions] = useState<ActionItem[]>([]);
   const [refreshing, setRefreshing] = useState(false);
   const [statusFilter, setStatusFilter] = useState<ActionStatus | 'ALL'>('ALL');
+  const [onlyReassess, setOnlyReassess] = useState(false);
 
   const load = useCallback(async () => {
     // Apenas NC viram ação corretiva; N/A é estado terminal (não aplicável).
@@ -36,6 +37,7 @@ export default function ActionsScreen() {
 
   const visible = actions.filter((a) => {
     if (statusFilter !== 'ALL' && a.status !== statusFilter) return false;
+    if (onlyReassess && !a.reassessDate) return false;
     return true;
   });
 
@@ -95,6 +97,12 @@ export default function ActionsScreen() {
                 {item.priority}
               </Text>
             ) : null}
+            {item.reassessDate ? (
+              <View style={[styles.dueChip, { backgroundColor: colors.warning }]}>
+                <Ionicons name="refresh" size={12} color="#fff" />
+                <Text style={styles.dueChipText}>Reavaliar {item.reassessDate.split('-').reverse().join('/')}</Text>
+              </View>
+            ) : null}
             <Text style={[styles.metaText, { color: colors.textSecondary }]}>{st.label}</Text>
             {dateLabel ? <Text style={[styles.metaText, { color: colors.textLight }]}>Vistoria: {dateLabel}</Text> : null}
           </View>
@@ -127,6 +135,16 @@ export default function ActionsScreen() {
               </Pressable>
             );
           })}
+        </View>
+        <View style={styles.chipsRow}>
+          <Pressable
+            style={[styles.chip, { backgroundColor: onlyReassess ? colors.primary : colors.surface, borderColor: colors.primary }]}
+            onPress={() => setOnlyReassess((v) => !v)}
+          >
+            <Text style={[styles.chipText, { color: onlyReassess ? colors.white : colors.primary }]}>
+              Só reavaliações
+            </Text>
+          </Pressable>
         </View>
       </View>
 

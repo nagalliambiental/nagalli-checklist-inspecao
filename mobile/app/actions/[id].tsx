@@ -45,6 +45,8 @@ export default function ActionDetailScreen() {
   const [priority, setPriority] = useState('Média');
   const [investmentMin, setInvestmentMin] = useState('');
   const [investmentMax, setInvestmentMax] = useState('');
+  const [reassessDate, setReassessDate] = useState('');
+  const [showReassessPicker, setShowReassessPicker] = useState(false);
   const [saving, setSaving] = useState(false);
 
   const load = useCallback(async () => {
@@ -60,6 +62,7 @@ export default function ActionDetailScreen() {
     setPriority(a.priority || 'Média');
     setInvestmentMin(a.investmentMin != null && a.investmentMin > 0 ? String(a.investmentMin) : '');
     setInvestmentMax(a.investmentMax != null && a.investmentMax > 0 ? String(a.investmentMax) : '');
+    setReassessDate(a.reassessDate ?? '');
   }, [db, id]);
 
   useEffect(() => {
@@ -81,6 +84,11 @@ export default function ActionDetailScreen() {
     if (_event.type === 'set' && value) setDueDate(value.toISOString().slice(0, 10));
   };
 
+  const onReassessChange = (_event: DateTimePickerEvent, value?: Date) => {
+    setShowReassessPicker(false);
+    if (_event.type === 'set' && value) setReassessDate(value.toISOString().slice(0, 10));
+  };
+
   const parseInvestment = (t: string) => {
     const n = parseFloat(t.replace(',', '.'));
     return Number.isFinite(n) && n >= 0 ? n : undefined;
@@ -97,6 +105,7 @@ export default function ActionDetailScreen() {
         priority,
         investmentMin: parseInvestment(investmentMin),
         investmentMax: parseInvestment(investmentMax),
+        reassessDate,
         status,
       });
       router.back();
@@ -247,6 +256,38 @@ export default function ActionDetailScreen() {
           </View>
         </View>
 
+        <Text style={[styles.sectionTitle, { color: colors.text }]}>Reavaliação</Text>
+        <View style={[styles.formCard, { backgroundColor: colors.surface, borderColor: colors.border }]}>
+          <Text style={[styles.fieldLabel, { color: colors.textSecondary }]}>Reavaliar até (opcional)</Text>
+          <Pressable
+            style={[styles.dateBtn, { borderColor: colors.border, backgroundColor: colors.background }]}
+            onPress={() => setShowReassessPicker(true)}
+          >
+            <Ionicons name="calendar-outline" size={16} color={colors.primary} />
+            <Text style={[styles.dateBtnText, { color: reassessDate ? colors.text : colors.textSecondary }]}>
+              {reassessDate ? dateLabel(reassessDate) : 'Sem reavaliação'}
+            </Text>
+          </Pressable>
+          {reassessDate ? (
+            <Pressable onPress={() => setReassessDate('')} style={styles.clearReassess} hitSlop={8}>
+              <Ionicons name="close-circle-outline" size={15} color={colors.textSecondary} />
+              <Text style={[styles.clearReassessText, { color: colors.textSecondary }]}>Remover reavaliação</Text>
+            </Pressable>
+          ) : null}
+          {showReassessPicker && (
+            <DateTimePicker
+              value={reassessDate ? new Date(reassessDate + 'T12:00:00') : new Date()}
+              mode="date"
+              display={Platform.OS === 'ios' ? 'spinner' : 'default'}
+              minimumDate={new Date()}
+              onChange={onReassessChange}
+            />
+          )}
+          <Text style={[styles.hint, { color: colors.textSecondary }]}>
+            Se preenchida, esta NC aparece na lista de Reavaliações e na aba do plano 5W2H.
+          </Text>
+        </View>
+
         <Pressable
           style={[styles.saveBtn, { backgroundColor: colors.primary }]}
           onPress={save}
@@ -297,6 +338,8 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   dateBtnText: { fontSize: 13 },
+  clearReassess: { flexDirection: 'row', alignItems: 'center', gap: 5, marginTop: 8, alignSelf: 'flex-start' },
+  clearReassessText: { fontSize: 12.5 },
   chipsRow: { flexDirection: 'row', gap: 8, marginTop: 4 },
   chip: { borderWidth: 1.5, borderRadius: 8, paddingVertical: 8, paddingHorizontal: 14 },
   chipText: { fontWeight: '700', fontSize: 13 },
