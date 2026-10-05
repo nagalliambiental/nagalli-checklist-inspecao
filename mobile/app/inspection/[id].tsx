@@ -10,7 +10,9 @@ import {
   Text,
   TextInput,
   View,
+  Platform,
 } from 'react-native';
+import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker';
 import { useEffect } from 'react';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useSQLiteContext } from 'expo-sqlite';
@@ -70,6 +72,7 @@ export default function InspectionDetailScreen() {
   const [inspection, setInspection] = useState<Inspection | null>(null);
   const [notes, setNotes] = useState('');
   const [saving, setSaving] = useState(false);
+  const [pickerFor, setPickerFor] = useState<string | null>(null);
   const [search, setSearch] = useState('');
   const [statusFilter, setStatusFilter] = useState<Situation>('all');
   const [areaFilter, setAreaFilter] = useState<string | null>(null);
@@ -317,6 +320,19 @@ export default function InspectionDetailScreen() {
     await reload();
   };
 
+  const onReassessDateChange = async (item: InspectionItem, event: DateTimePickerEvent, date?: Date) => {
+    setPickerFor(null);
+    if (event.type === 'set' && date) {
+      await service.updateItem(inspection!.id, item.id, { reassessDate: date.toISOString().slice(0, 10) });
+      await reload();
+    }
+  };
+
+  const clearReassess = async (item: InspectionItem) => {
+    await service.updateItem(inspection!.id, item.id, { reassessDate: '' });
+    await reload();
+  };
+
   const complete = async () => {
     setSaving(true);
     try {
@@ -492,6 +508,36 @@ export default function InspectionDetailScreen() {
         placeholderTextColor={colors.textLight}
         multiline
       />
+
+      {item.status === 'NC' && (
+        <View style={styles.reassessBox}>
+          <Text style={[styles.reassessLabel, { color: colors.textSecondary }]}>Reavaliação (opcional)</Text>
+          <Pressable
+            style={[styles.dateBtn, { borderColor: colors.border, backgroundColor: colors.background }]}
+            onPress={() => setPickerFor(item.id)}
+          >
+            <Ionicons name="calendar-outline" size={16} color={colors.primary} />
+            <Text style={[styles.dateBtnText, { color: item.reassessDate ? colors.text : colors.textSecondary }]}>
+              {item.reassessDate ? `Reavaliar até ${fmtDate(item.reassessDate)}` : 'Definir data de reavaliação'}
+            </Text>
+          </Pressable>
+          {item.reassessDate ? (
+            <Pressable onPress={() => clearReassess(item)} hitSlop={8} style={styles.clearReassess}>
+              <Ionicons name="close-circle-outline" size={15} color={colors.textSecondary} />
+              <Text style={[styles.clearReassessText, { color: colors.textSecondary }]}>Remover reavaliação</Text>
+            </Pressable>
+          ) : null}
+          {pickerFor === item.id && (
+            <DateTimePicker
+              value={item.reassessDate ? new Date(item.reassessDate + 'T12:00:00') : new Date()}
+              mode="date"
+              display={Platform.OS === 'ios' ? 'spinner' : 'default'}
+              minimumDate={new Date()}
+              onChange={(e, d) => onReassessDateChange(item, e, d)}
+            />
+          )}
+        </View>
+      )}
     </View>
   );
 
@@ -798,6 +844,8 @@ export default function InspectionDetailScreen() {
   );
 }
 
+const fmtDate = (iso?: string): string => (iso ? iso.split('-').reverse().join('/') : '');
+
 const styles = StyleSheet.create({
   container: { flex: 1 },
   top: { paddingHorizontal: 16, paddingTop: 12, paddingBottom: 8, gap: 10 },
@@ -954,6 +1002,20 @@ const styles = StyleSheet.create({
   },
   noItems: { textAlign: 'center', paddingVertical: 40 },
   sectionTitle: { fontSize: 16, fontWeight: '700', marginTop: 22, marginBottom: 8 },
+  reassessBox: { marginTop: 10, gap: 6 },
+  reassessLabel: { fontSize: 12.5, fontWeight: '600' },
+  dateBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    borderWidth: 1,
+    borderRadius: 8,
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+  },
+  dateBtnText: { fontSize: 13 },
+  clearReassess: { flexDirection: 'row', alignItems: 'center', gap: 5, alignSelf: 'flex-start' },
+  clearReassessText: { fontSize: 12.5 },
   generalNotes: { minHeight: 80 },
   exportBtn: {
     flexDirection: 'row',
