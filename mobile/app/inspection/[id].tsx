@@ -10,9 +10,7 @@ import {
   Text,
   TextInput,
   View,
-  Platform,
 } from 'react-native';
-import DateTimePicker, { DateTimePickerEvent } from '@react-native-community/datetimepicker';
 import { useEffect } from 'react';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useSQLiteContext } from 'expo-sqlite';
@@ -72,7 +70,6 @@ export default function InspectionDetailScreen() {
   const [inspection, setInspection] = useState<Inspection | null>(null);
   const [notes, setNotes] = useState('');
   const [saving, setSaving] = useState(false);
-  const [pickerFor, setPickerFor] = useState<string | null>(null);
   const [search, setSearch] = useState('');
   const [statusFilter, setStatusFilter] = useState<Situation>('all');
   const [areaFilter, setAreaFilter] = useState<string | null>(null);
@@ -320,15 +317,6 @@ export default function InspectionDetailScreen() {
     await reload();
   };
 
-  const onReassessDateChange = async (item: InspectionItem, event: DateTimePickerEvent, date?: Date) => {
-    setPickerFor(null);
-    if (event.type === 'set' && date) {
-      const iso = date.toISOString().slice(0, 10);
-      await service.updateItem(inspection!.id, item.id, { reassessDate: iso });
-      await reload();
-    }
-  };
-
   const complete = async () => {
     setSaving(true);
     try {
@@ -495,42 +483,15 @@ export default function InspectionDetailScreen() {
       <TextInput
         style={[styles.itemNotes, { color: colors.text, borderColor: colors.border, backgroundColor: colors.surface }]}
         placeholder={
-          item.status === 'NA'
-            ? 'Motivo do N/A (ex.: não avaliado no ato da vistoria, ambiente em uso)...'
-            : item.status === 'NC'
-              ? 'Descrição da não conformidade (observação)...'
-              : 'Observações (opcional)...'
+          item.status === 'NC'
+            ? 'Descrição da não conformidade (observação)...'
+            : 'Observações (opcional)...'
         }
         value={item.notes}
         onChangeText={(t) => service.updateItem(inspection!.id, item.id, { notes: t })}
         placeholderTextColor={colors.textLight}
         multiline
       />
-      {item.status === 'NA' && (
-        <>
-          <Text style={[styles.naHint, { color: colors.textSecondary }]}>
-            Este motivo constará na aba "Pendências de Reavaliação" do plano de ação 5W2H.
-          </Text>
-          <Pressable
-            style={[styles.dateBtn, { borderColor: colors.border, backgroundColor: colors.background }]}
-            onPress={() => setPickerFor(item.id)}
-          >
-            <Ionicons name="calendar-outline" size={16} color={colors.primary} />
-            <Text style={[styles.dateBtnText, { color: item.reassessDate ? colors.text : colors.textSecondary }]}>
-              {item.reassessDate ? `Reavaliar até: ${fmtDate(item.reassessDate)}` : 'Definir data de reavaliação'}
-            </Text>
-          </Pressable>
-          {pickerFor === item.id && (
-            <DateTimePicker
-              value={item.reassessDate ? new Date(item.reassessDate + 'T12:00:00') : new Date()}
-              mode="date"
-              display={Platform.OS === 'ios' ? 'spinner' : 'default'}
-              minimumDate={new Date()}
-              onChange={(e, d) => onReassessDateChange(item, e, d)}
-            />
-          )}
-        </>
-      )}
     </View>
   );
 
@@ -837,8 +798,6 @@ export default function InspectionDetailScreen() {
   );
 }
 
-const fmtDate = (iso?: string): string => (iso ? iso.split('-').reverse().join('/') : '');
-
 const styles = StyleSheet.create({
   container: { flex: 1 },
   top: { paddingHorizontal: 16, paddingTop: 12, paddingBottom: 8, gap: 10 },
@@ -993,18 +952,6 @@ const styles = StyleSheet.create({
     fontSize: 13,
     minHeight: 44,
   },
-  naHint: { fontSize: 11, marginTop: 6 },
-  dateBtn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-    borderWidth: 1,
-    borderRadius: 8,
-    paddingVertical: 10,
-    paddingHorizontal: 12,
-    marginTop: 8,
-  },
-  dateBtnText: { fontSize: 13 },
   noItems: { textAlign: 'center', paddingVertical: 40 },
   sectionTitle: { fontSize: 16, fontWeight: '700', marginTop: 22, marginBottom: 8 },
   generalNotes: { minHeight: 80 },

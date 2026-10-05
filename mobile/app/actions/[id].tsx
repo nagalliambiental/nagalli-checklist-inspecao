@@ -45,8 +45,6 @@ export default function ActionDetailScreen() {
   const [priority, setPriority] = useState('Média');
   const [investmentMin, setInvestmentMin] = useState('');
   const [investmentMax, setInvestmentMax] = useState('');
-  const [reassessDate, setReassessDate] = useState('');
-  const [showReassessPicker, setShowReassessPicker] = useState(false);
   const [saving, setSaving] = useState(false);
 
   const load = useCallback(async () => {
@@ -62,7 +60,6 @@ export default function ActionDetailScreen() {
     setPriority(a.priority || 'Média');
     setInvestmentMin(a.investmentMin != null && a.investmentMin > 0 ? String(a.investmentMin) : '');
     setInvestmentMax(a.investmentMax != null && a.investmentMax > 0 ? String(a.investmentMax) : '');
-    setReassessDate(a.reassessDate);
   }, [db, id]);
 
   useEffect(() => {
@@ -84,11 +81,6 @@ export default function ActionDetailScreen() {
     if (_event.type === 'set' && value) setDueDate(value.toISOString().slice(0, 10));
   };
 
-  const onReassessChange = (_event: DateTimePickerEvent, value?: Date) => {
-    setShowReassessPicker(false);
-    if (_event.type === 'set' && value) setReassessDate(value.toISOString().slice(0, 10));
-  };
-
   const parseInvestment = (t: string) => {
     const n = parseFloat(t.replace(',', '.'));
     return Number.isFinite(n) && n >= 0 ? n : undefined;
@@ -105,7 +97,6 @@ export default function ActionDetailScreen() {
         priority,
         investmentMin: parseInvestment(investmentMin),
         investmentMax: parseInvestment(investmentMax),
-        reassessDate,
         status,
       });
       router.back();
@@ -123,8 +114,8 @@ export default function ActionDetailScreen() {
           <AppLogo size={38} rounded={9} />
           <View style={{ flex: 1 }}>
             <View style={styles.topMeta}>
-              <View style={[styles.typeBadge, { backgroundColor: item.type === 'NC' ? colors.error : colors.textSecondary }]}>
-                <Text style={styles.typeBadgeText}>{item.type === 'NC' ? 'NÃO CONFORMIDADE' : 'PENDÊNCIA N/A'}</Text>
+              <View style={[styles.typeBadge, { backgroundColor: colors.error }]}>
+                <Text style={styles.typeBadgeText}>NÃO CONFORMIDADE</Text>
               </View>
             </View>
             <Text style={[styles.itemLabel, { color: colors.text }]} numberOfLines={3}>
@@ -255,36 +246,6 @@ export default function ActionDetailScreen() {
             </View>
           </View>
         </View>
-
-        {item.type === 'NA' && (
-          <>
-            <Text style={[styles.sectionTitle, { color: colors.text }]}>Reavaliação</Text>
-            <View style={[styles.formCard, { backgroundColor: colors.surface, borderColor: colors.border }]}>
-              <Text style={[styles.fieldLabel, { color: colors.textSecondary }]}>Reavaliar até</Text>
-              <Pressable
-                style={[styles.dateBtn, { borderColor: colors.border, backgroundColor: colors.background }]}
-                onPress={() => setShowReassessPicker(true)}
-              >
-                <Ionicons name="calendar-outline" size={16} color={colors.primary} />
-                <Text style={[styles.dateBtnText, { color: reassessDate ? colors.text : colors.textSecondary }]}>
-                  {reassessDate ? dateLabel(reassessDate) : 'Definir data de reavaliação'}
-                </Text>
-              </Pressable>
-              {showReassessPicker && (
-                <DateTimePicker
-                  value={reassessDate ? new Date(reassessDate + 'T12:00:00') : new Date()}
-                  mode="date"
-                  display={Platform.OS === 'ios' ? 'spinner' : 'default'}
-                  minimumDate={new Date()}
-                  onChange={onReassessChange}
-                />
-              )}
-              <Text style={[styles.hint, { color: colors.textSecondary }]}>
-                Este prazo será levado em conta na exportação do 5W2H (planilha de reavaliações).
-              </Text>
-            </View>
-          </>
-        )}
 
         <Pressable
           style={[styles.saveBtn, { backgroundColor: colors.primary }]}
